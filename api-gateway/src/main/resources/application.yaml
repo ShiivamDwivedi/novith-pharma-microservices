@@ -1,0 +1,19 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: api-gateway
+
+  cloud:
+    gateway:
+      routes:
+        - id: test-service
+          uri: lb://TEST-SERVICE
+          predicates:
+            - Path=/test/**
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8762/eureka
